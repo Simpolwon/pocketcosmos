@@ -1,98 +1,79 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Pocket Cosmos Studio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
-<style>
-/* Layout: one readable column; app summary, how TikTok is used, then the Terms and the Privacy Policy as anchored sections */
-:root{
-  --bg:#f5f6fb; --fg:#1b2040; --muted:#555d83; --line:#d8dcee; --accent:#22756c; --panel:#ffffff;
-  --display:"Fraunces",Georgia,serif; --body:"Atkinson Hyperlegible",system-ui,sans-serif;
-}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0b1026;--fg:#e8ebff;--muted:#9ea6d8;--line:#252c55;--accent:#3fd6c4;--panel:#121a3a;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0b1026;--fg:#e8ebff;--muted:#9ea6d8;--line:#252c55;--accent:#3fd6c4;--panel:#121a3a;color-scheme:dark}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 var(--body);padding-block:44px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-main{max-width:680px;margin:0 auto;display:grid;gap:40px}
-header{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center}
-header img{width:84px;height:84px;border-radius:20px;display:block}
-header div{display:grid;gap:6px;min-width:0}
-.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:700}
-h1,h2,h3{font-family:var(--display);font-weight:600;text-wrap:balance;margin:0;line-height:1.15}
-h1{font-size:clamp(28px,6vw,40px)} h2{font-size:26px} h3{font-size:19px}
-p,li{margin:0} .muted{color:var(--muted)}
-nav{display:flex;gap:16px;flex-wrap:wrap} nav a{color:var(--accent);font-weight:700}
-section{display:grid;gap:14px;border-top:1px solid var(--line);padding-top:28px}
-ol,ul{display:grid;gap:10px;padding-left:22px;margin:0}
-.steps{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px 16px 40px}
-dl{display:grid;grid-template-columns:max-content 1fr;gap:8px 16px;margin:0} dt{font-weight:700} dd{margin:0;min-width:0}
-@media (max-width:480px){dl{grid-template-columns:1fr} dd{margin-bottom:6px}}
-a{color:var(--accent)} a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-</style>
-</head>
-<body>
-<main>
-  <header>
-    <img src="data:image/webp;base64,UklGRsgUAABXRUJQVlA4ILwUAAAQUgCdASqgAKAAPmEokEWkIqGirHXMcIAMCWxrCVZXUmdr5/zcq+/if7Z+yPZP4X9O+Yb0N/0/75+V/zT/2vq4/U/sCfsN0vPMV+3f7ge83/rf9j/cvdh/gvuA+Qz/Gf5TrNf3J9hr9rvTq9lD+yf9P0r///7AH//9trURWVuff5noVZl7TfsvnT/vvB/gHPs7RHAzw+8QD8w+SOoE/pT0itF3177B/SzSKiPKMCq8+lZDfTgtulxASWy3bTQgx8j4WQRNbd3bH/h9WvRx/VDJleV5coNVcViVZb6Tt5Ytm+g+6E0QIztuSkDoBdJ1GJT+bvqFm9f8ILTtuSQuy6+bt20/7G7Pm/QSQ1+wrCNUhP3tqmiKftTZtVilhHxBseMgftxusJwr2hHbO85JkdB6atiCPwY9qM9GP51MjUx9dwnaCacPk6R5FQ81jEz+FpTlo7sWTI0DGJ9ba6XKAQqAlxgeZdD/z/gg8CPMK2qT4HkqFAUf7xgG1LnkAkw12YwW8uKWCIbOewMTYXRhADz+cQa/oq+9rg8uR/EoeW4jdq++AbgG1P50sgs9Xzi2zGUan3aF67TjVNQpQJMcFyuyG+z3MktmAiasYq66j02ooJ7p951GLLOifSwV7PuTw/98lapRhxFSFDu8bP1eaXAkN02xKfqG5K9FYYTlvhqI/6wK/86wlemjY0le3dgUR0NQXH7/77IPV5OHdmjhbJwHDPtEvrL9yWG6VtRHzs3KAMAGT7wc6/oqGmzUzwwnn4Q8HpAproNqlkw4tNl0ch3t8g27YbwWxzZVefUDPZJ/anisyfbMsqc1gaGdtDl1Z4Lmj/4p4cTX9oD6uUAdbyDPJih117zb71gvA9ZpEclb4sY8rQZH2sLgAAD+/UXpI37D7NKEXw6I16brt49W04UBoxeMdCL5WFwa0e5QqHG5wPkr2nbVCZKzORVC7VKtx/e6QSDdkPZKir5OsfPe8BvsKtMnqzx755FMdRv+M4bpf/eTvb/qhrcZ//0uXNCTjR6ezknhVy32NztqFajfxTs4fPGTPOi3di4I5jc8qNaikS8idIzjiFQVqR/mGtG9eqbtLBU4Qh3oTBWfdgKwVol544HWlU2hlsYPJHXOrgD/+kR86GUZwRGjI+B1oD0WwYVCM+eMPlQ+EuL+9001QX/AELdFmZNJ1jq1UAz8Qz3knVnZ1C+X9SGErbDhOSn9gBNoSsijZPOO1z8qsChVbzrwaUq1PqkNklNACaLejjkxMQGJwLO1DviG/bAwfe20DVrif6odYhs+jUrHIn+Koen8Me4/2yT7Mgopdl//1hH4XNecLnDmcj3150MGeaXShCmC3eMasUXstK8Kr967QIazJ+VIRarfykgyWinTRQRpZdPQ+78ma0r5PvIevTUc4d/iwBQoDUrWRe/BC0yfQNOFe38x2oYVOKcniTBFsk9x2wq4OEIiYvkLiWRNRkC1T6jOEHwJGGyPzM/Fi5h8M4cg7loGuQTgze03O8+PwjaGhwK9Yjyx8PBkC9pnC30meaPRwWzqyW9+NvIP50p16gBr0XFa5JUSZjI7mCvPuvmKL9d9JR9JP24eE9aDhruFuC8EPXT3rg080phH34ghWeDzjDKkW0c/+IBFAJrTNDaZgzDnUzVJaFlEmeZemMjbiFHhQDMIFuVZP/yKI3GXiyBCSxsw5TqmLILxbCpYaGz01Uxc4bXJFicZ38JhKufo7rHHOlIN+yYhn+W3pRstvcBH+goAXHeI7DA8wCWAB+uomlvxTwtM49114tzbPYoHHgF035AK5vwktGChHACmjepLtMnTBBganV/PbgU2UwDANcrlxMdrVTWwlIDdkwOOqeK6fVBjbTWPSBwhIvb9XnTsr79Mow8DavuO1OeHPL2YUXRLoRJg0X8A+bBnNzPM5amEhDsW8tpZH517NTTCDxZ8MLLIWn3ww3SFZVzgGft+aggLAog52qGL1mf56U/8MnbDep+U5mp77RxJX/nwiHcJm9/QuOzl4ZAUnU6xELCNe5hMva4daDSz58RLecL5j50DqgHtPi2yRwMlY/ZjYDb6We/VTnPXOfbI1y/oJFL7CQR+BTTUs0jZq2uYre63orKVhuXxsnQojWG60wtfBacdPZh4TeI6e3X+lGCoyPsOd/Vvcyi1EbpBe5AfEIu6zaVTWVxFefGJPrFBtiCKqlWG5VBylLvvCp5i43NjSVfeMWYyA0T8/27uH3NjlqMZ0nCfLtOvpApn+4K4dFwywTswddC0xF5hXDBzvNA9F0iArDDBybbcNGNkK+UzG8T0RXrZL2iQ6bw94+B7pT/YvL3T/Gq6Dfy5BxDihgjbHs7/m5biRc+GdJJEXu5ooUVgx7khTpZnwmiRQCPTDreCDlLTICRsX7tsaN5XUY7+NA7xcryBum2jpHSv0HmQt15eto5RMmuQec049H/QKpoXt2fcq9R1mBqKkOtOUVsJ4m48GhkfZ3e4xE//uR8T6rVfe8Qf5WvIZYz5qo95VEH3+PIuJVmt//qGqWFBSsvQfhuJc9l1oXmStyPs2MmU2F7xKhx04EjR6Kjf3O9awmraosbwoy00bre6TK2wDiSbcBqsX8Jg5Rptr/FPREn+E2sWQpCnjhWpMUvkdckrGL19dWXg2IKq/gTlogllo4l1I0VXoOfJiweYjaq6M1uW7ck4KDpMqFQYVwIensqZPDpgL9b6XmMdBRrl55KAsAG90m77zJFeE3xovEmOe2gk7EX/0l9g5OBrFg3LU/JlgboF/QHojgfVod0W0x3iCKnkqezmTiEXEkrFhr0W9WVQdSfKIhFtHAIdovqQY7Lmi2TNUcjorRL+VBqw04ZDVpjRFFG08sEHxKAA9zFeSpirTghJmaQwFFSAT5gBkgHwK/u1P/qOn//wa9B1grJcl4q4am7fTekhbD9ULkPkMhkeeDITe1iBT3cVFKYeKoD46vVuSCF7V0pp23VRQhVGGH8S3ne+JkIH87C7+wA443Oe/dSPc0gTTthDzwjwWp1IauoveC7vl5nX3B4vLc3nYsCXMw4oRlH655raMUV2lKQ4YQSAXcLfSGD23WKRX0Uf2TNCLcjWVreXPfL5RKVTBDOUEcCqjO3ipqlkv7U6BoLLbCO/85mzwQrJJ9AqAj/Y8dku4pNlOe5EEW3+A1iYP6kYKAwXtO1vYEcBEgLd0LvAtJbw8q8WQy5TYPHgu9GKQ9GlJ0dSXTS3t9sT8Wx/y6WLy3N/n+B35JXVmcCaRxd6yRTKT+dXyWRWqsMTc+apWuShmGg21I+eh5ttL5qWqlXWpqce1jbNSglZJHJaWZeAfexLaeQkf1QDduLgojBCJmilMEA5HCnrXqxB6VfDa3mAHRKNgRt8cTjs9MGO0Yy16mptQrjQeIWd7Ly3IOYtcHXUkKnLW1JBfLYdRS+48q56Hd2dg9R+ljTjV9t01pfWe9sMIZ/P3BDULhyxw9goY4TyjYVct7QZ9Hhkgc2aNgsyfRZjpEy9v9pNa/QfWFDY/VICIiTZIIiNGAExzgsa22SQ4/UbjjOmJrLCAL9tQpznV+DWntmjjN6J2EsYrMfbaSyCuGx4k05ah5zJZc4zJkJeT8FjhWJzuGzJAwQXEGVn9bAg/U+ovrpW8qBw76bBQSvBMnUdaVNo9czte1jPTaGTqeG46UP6r/boBUA0+fw9KMNWcLthYkeyBZhxrarJ6M0acvNiOr1bog7Ib/un2ObLlTlgQvGbWkOYxnCYXzwYDahaYBrshAd0UtnSpvVs0VXEkQfEsaFUKZadHwyct6O2p0w+RtfZPEzuSU9PpILwpDzbhUCAnLDFiZZ4QXISTWxhI4973URA6+EcCZONTSNhqfqOY3DsbRqEQOVrLOjKMeHh8ssQaJYVfIhKtzDkChrLoo5SCf+2T10dm57RCru4M7Im5+FWaryNHHKeR1fuPJ1JS61SEl2Aq64VOmW9fYHD0BoXdr8SyLWjRyuBi1i0fACJDiok34P0U7Tto+TEGWXIQavOep0YLR37Y2e+i4pPiO8tx2BuM0yfAqppRUBJiRTDx/x7YFlO4AdlQ8IZujfhxV1FoNFjXMH3biQdr3vhz54Pzgf13efS8gmIE95T+/SFHxLYPPhfkRLjas105ptsJTq1yUsC3bytTn7T4ZfhcuuzMTz+0O5ctb/C2vZUOKCC2/wTttjr8O6E4Ker4RP8d4T64hlwXilmptpVVKxVhyeQ4jhNP7pd7rbJHjBTWgJVOY4Bu6iIXy5gRsEJJbSUscVeoh9rVc6f7//YK3xH3ciE9yKnsnogvbmOK//Q3CKp460+jiCcpBnNXIA4pWRq/1sBtTsmht2t7y+o49SSDYd+0t325QAIHsmZAs7rLO0F4AmaLYGI1vTdPGzRJTw84ds9ZCcIt8cT8vltFlMrMEK1EEirBnoJ7Kb3Q4rH7V4xdqUnwUJWAMk9MhF+3/hFtm7UIimegEaCDAOMAuVeq2qNs6I90FJwV6zhfYPayzyTEsLOLRHqP6g6ixvv+hNhqxkM9+ZHZOxtkbMWwPfzmvugJlj0lgmso5pMyiOQTydLbO1ybXqcCtkVVxVnm8ucRJMpY/TZeCWJI/8k42sZmWXkIjnAZr0i0b7bq0kVG2pAqs92CqTKHzOUGy34jOhz25Jg69KQbB4ottmIir+10StGMZLe2zfrEFYTXLKE+8RBX/UccfujIE21102q2/ARU4l6G5JetfM+vZrQu36AyxWmze8svmqocA19niR43Z5tkREvLpk2SIyZlsnrOtLP2xKQpkbze0oSQnrzleFCBU4xo4FvavJYCskyvDY+/AOaTh9UDE+b1hDZcysAu+eyMfutV7KAppUn3sIjAVmc1LqrqJ7HIWzzZjYh34fRPn7gP7KGtr9IyfuBGfKM37/X92bfaC/q9pBCnz+/NoM1K+VGB3TuMvFgo4KNLS3BODgdhGe1BpqafjGpK583QKt6WnLev3LI8PsGe0xoMbp6joa4TcMmOUdh2JVJTR1JQQq+MfscTxQLaYz/QXHzCf+duy7ljnpty9pvS2PNuzgW1IrypUz/ozkkRjykFL5xDdPGEexZgdkGWRurqGuE8KWaUITOZrzxjvbz1o3aGefl/eqHFGobtHk/4yOupiTo9l4Ud/BdiaMRG22UHCH3TmXTTeFx06Vmd2viO8NDz8xfd3KQmgo97TQHohAuR0ftNSVmAMIfHVtTZP59CnWsXhJoRkbBp88A+643F32rTFTUI6D5XvblgnzW0vcXN8q79E8i/JQzFQVbClAi0WjOOujzrUtBsUIbmZWk6WAVR3YoL9ZYPg/qrzjRdKo+yvOQGKggMBdXElgHw/Y0MXrqwiboJMepRy5O3qzDoyEHLXWP0+5SXWDeD68IvmwhUDTb5dKd4omChm+Au8G016qvt1p/1mvWpXNqAhd260ZE3y4dZZvnvBwhYFDePFA/IndqeSWyE1RqFW4mQot+LPP8eJIi3s4Y66d3uUGIr7ME18G/MUNgx2DmtFgMmy+UPkUycvG0UC20qrvVyrZvhIsG2DtKGsfC8EU5fT3tiDNHt7lECCCLl5LA9+ptdNQZeBSg9d7iSXvhgJltsRVulBXuuAn3dXGHI3LfE3lTpTn1Or5XEFtKnxO/dlpK6aYEIIIoGhA/gZbAy/A0lqh08umxHLraUeV8K3dn6KJD/Z1G+OosonWcmByytmaOLhtKJXrv6W5iJmFFyz62AFfxk2u9YjNoJPjdLInUWkFR4FBWkYkGJ3QnsZaz/LV010QJqJjBCM1uhalBdRSLXMw7PRDKQBHOrvo1eannivdKTrois8KwpPuaqmL1NO0zKr95w34Luv3uiAe+4VQH0RysSYc8CWQmEvXIfrp4g2Z/tskEnMRg7/xHffronHcu+rDfgWisY7OthCz5UBRA/QaDhLK0aTF5cAsPMvOoZhrBovVqud3W3g/tisxVUHVEaxD4GJ2TK4grCIKILKo5keRwmDJU6BFj+jx7qTrn5XkP6bF7iQnXb1l50fPi7qAHf1FZqOak7HsKduU7aRgGkQ0U8cNxIWE22euHjt1GzoXDENZRX81kIvQZu6AWLFjsfG+95PWxynJUE9SHDKOHH2lYs7FxaGrNsR/vVtzvnKo/iPd8zfEN79/WBoRdNh+h1eFEA9Su8kck8YEpKRF8Q6KFJ0H+dnA7APHyHZJX+/ycj7xxsybSDDwIjYkUJwxKlYydKOxHb5M1Faa3v3+0trrSobmUdWdPRZrC8hbZS9c/wJg6wx+nRDhlpgCLeoG66FwoTUCu31O3VeCyo8wwqGZ654wKDHLzUo/d8ro2DZocxT984KDAtxIjOGgKgZfcOMm/d9FlbYlhCk2wxGnO685To8ZyGPEOveuoJ63zXMmBR4hVqCAKZT6z5YzFM90338OupGoTSIvx8Vyfv3nOJjwLnM4Fv14OffzGoh+6fYl9NoSHqIaLnhoY8sI1keP7ATnLdK7LT4ATGuJxLI02aL+UJNuoWmYQRFqDxLIQ7tPSuwhnvUNXEMZ4ItlZW0m8Kzj5BVYRNTsiN40SywsIoVVhsfEMeF3UzNIjcPRk4uW34FfbT1Xg8spBeya2tZHM9OcJpPZEOQATA2S+igqp9b2Onl564ub5hOutGDntBO8MwTvrgzgJ+niNaQ43IKQJ50uayqxYa0O9AvdlZa0bkIPQOMhrgWdVGpD5uhdBuXIGErdqpN7kyZMoXDkLmd1QOwbXw+XK95nrwtP5RyKQEPkzBdDuR+PRoW0M5NPaeMUEC1yGKrCo/teI+/CJQHpOFIbJ/E8pmOu4xN3d8Op/rVSZmLRbG6CiUij5BrKX7Ao7LbpMV9QxTdToJFUxS8xUbardlAfTTn58NXYeuAm89XG10dK9YIpc8LO9LdeixyutSz+r3Nqt8rAbkQBJdaRmmpxEMHx7+uZcISbT7eZNaczrPjn6uaHRJYNAIakqceD19aNWE+FnFFieNPJTUiDAFT+V5x1E3Rud5fN/Xdlbu6/trY5dveqnXlsCCoz80emZdoqBcz/90gBmPB/piUJUo+//nQ2876kYXpNaTMndAhxWAAAA" alt="Pip, the Pocket Cosmos mascot, waving in his astronaut helmet">
-    <div>
-      <span class="eyebrow">Pocket Cosmos</span>
-      <h1>Pocket Cosmos Studio</h1>
-      <p class="muted">The production desk behind the Pocket Cosmos science channel. Last updated 14 October 2026.</p>
-    </div>
-  </header>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pocket Cosmos</title>
+<meta name="description" content="Pocket Cosmos: an animated science channel with Pip the astronaut.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:title" content="Pocket Cosmos"><meta property="og:image" content="logo.jpg">
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header class="top"><div class="wrap">
+<a class="brand" href="./"><img src="logo.jpg" alt="Pocket Cosmos logo: Pip the astronaut">POCKET COSMOS</a>
+<nav><a href="./" class=on>Home</a><a href="studio.html">The Studio</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></nav>
+</div></header>
+<main class="wrap">
 
-  <nav aria-label="On this page"><a href="#about">About</a><a href="#tiktok">How it uses TikTok</a><a href="#terms">Terms of Service</a><a href="#privacy">Privacy Policy</a><a href="#contact">Contact</a></nav>
+<div class="hero">
+ <div>
+  <h1>Big science in small, animated bites.</h1>
+  <p class="lead">Pocket Cosmos is an animated science channel. Pip, a small astronaut with a star on his helmet, explains space, the body and the strange physics of everyday life in short videos you can watch in a few minutes.</p>
+  <div class="btns"><a class="btn" href="https://www.youtube.com/@PocketCosmosTV">Watch on YouTube</a><a class="btn ghost" href="https://www.tiktok.com/@pocketcosmotv">Follow on TikTok</a></div>
+ </div>
+ <img src="pip_present.webp" alt="Pip the astronaut giving a peace sign">
+</div>
 
-  <section id="about">
-    <h2>About the studio</h2>
-    <p>Pocket Cosmos makes short animated videos that explain space and science in plain words, with a small astronaut called Pip. Pocket Cosmos Studio is the desktop app the channel owner uses on his own computer to produce those videos and publish them to the channel's own accounts on YouTube, Instagram and TikTok.</p>
-    <p>The studio is a private tool. It is used only by the channel owner, on the channel's own accounts. It is not offered to the public, and nobody else can sign in to it.</p>
-  </section>
+<section id="watch">
+ <h2>What we make</h2>
+ <p>Every episode starts with one question and answers it in plain words, with hand-crafted animation, a narrator and Pip along for the ride.</p>
+ <div class="grid">
+  <div class="card"><span class="tag">Episodes</span><h3>Long-form explainers</h3><p>Ten-to-fifteen-minute stories on YouTube, told chapter by chapter, from the microbes inside you to the edge of the universe.</p></div>
+  <div class="card"><span class="tag">Shorts</span><h3>One idea, one minute</h3><p>Vertical clips on YouTube Shorts and TikTok that pull the single most surprising fact out of each episode.</p></div>
+  <div class="card"><span class="tag">Pip</span><h3>A guide, not a lecturer</h3><p>Pip notices, wonders, gets things wrong and tries again, and moves things with a little telekinesis when the science needs a hand.</p></div>
+ </div>
+</section>
 
-  <section id="tiktok">
-    <h2>How the studio uses TikTok</h2>
-    <p>The studio uses two TikTok products: Login Kit, to connect the channel's TikTok account, and the Content Posting API, to publish the channel's short videos to that account.</p>
-    <ol class="steps">
-      <li>The owner presses <b>Connect TikTok</b> in the studio, signs in on TikTok's own page and approves the permissions <b>user.info.basic</b>, <b>video.upload</b> and <b>video.publish</b>.</li>
-      <li>When a Short is ready, the studio opens a <b>Post to TikTok</b> screen. It shows the connected account's name and picture, a preview of the video and its caption.</li>
-      <li>The owner chooses who can see the video from the options TikTok allows for the account. Nothing is chosen in advance.</li>
-      <li>The owner decides whether to allow comments, Duet and Stitch. All three start switched off, and any the account has turned off in TikTok are greyed out.</li>
-      <li>If a video promotes a brand, the owner switches on the disclosure and picks Your brand or Branded content, and the matching TikTok label is shown.</li>
-      <li>The owner reads the Music Usage Confirmation notice and presses <b>Post</b>. Only then is the video uploaded. The studio checks the post's status and shows when it is live.</li>
-    </ol>
-    <p>Videos are made with the help of AI tools, so every post is marked as AI-generated content. The studio never posts without the owner pressing Post, never posts to anyone else's account, and never reads other users' data.</p>
-  </section>
+<section id="topics">
+ <h2>Topics on the channel</h2>
+ <div class="grid">
+  <div class="card"><h3>The body</h3><p>The trillions of microbes that live in and on you, what they do, and why most of them are on your side.</p></div>
+  <div class="card"><h3>Space</h3><p>Galaxies, black holes, planets and the scale of everything, made small enough to picture.</p></div>
+  <div class="card"><h3>Everyday physics</h3><p>The hidden science in ordinary things: kitchens, bathrooms, weather and the stuff in your pocket.</p></div>
+ </div>
+</section>
 
-  <section id="terms">
-    <h2>Terms of Service</h2>
-    <ol>
-      <li>Pocket Cosmos Studio is used only by the owner of the Pocket Cosmos channel, on the channel's own accounts.</li>
-      <li>A video is published only after the owner has connected an account, reviewed the post and pressed Post. The owner can disconnect any account at any time, in the studio or in the platform's own settings.</li>
-      <li>Every post follows the rules of the platform it goes to, including the TikTok Terms of Service, Community Guidelines, Branded Content Policy and Music Usage Confirmation. AI-generated videos are labelled where the platform asks for it.</li>
-      <li>The studio and the videos it makes are provided as is, without warranty. The videos are educational entertainment, not professional advice.</li>
-      <li>These terms may change. The date at the top of this page shows the latest version.</li>
-    </ol>
-  </section>
+<section id="follow">
+ <div class="split">
+  <img src="pip_float.webp" alt="Pip floating">
+  <div>
+   <h2>Follow along</h2>
+   <p>New episodes go up on YouTube, with Shorts on YouTube and TikTok.</p>
+   <p><a href="https://www.youtube.com/@PocketCosmosTV">YouTube: @PocketCosmosTV</a><br><a href="https://www.tiktok.com/@pocketcosmotv">TikTok: @pocketcosmotv</a></p>
+   <p>Pocket Cosmos videos are made by the channel owner with the help of AI tools, and are labelled as AI-generated content where a platform asks for it.</p>
+  </div>
+ </div>
+</section>
 
-  <section id="privacy">
-    <h2>Privacy Policy</h2>
-    <p>The studio handles only the channel owner's own account data. It does not collect, see or store information about viewers or any other TikTok users.</p>
-    <dl>
-      <dt>What is stored</dt><dd>The access and refresh tokens TikTok issues when the owner connects the account, the account's ID, and the display name, username and profile picture used to show which account is connected.</dd>
-      <dt>Where</dt><dd>Only on the owner's own computer. Nothing is sold, shared or sent anywhere except to the platform the data came from.</dd>
-      <dt>Why</dt><dd>To upload the owner's videos to the owner's account when he presses Post, and to check whether an upload has finished.</dd>
-      <dt>How long</dt><dd>Until the account is disconnected. Pressing Disconnect in the studio deletes the stored tokens and profile details.</dd>
-      <dt>Your control</dt><dd>Press Disconnect in the studio, or remove the app's access in your TikTok account settings.</dd>
-    </dl>
-  </section>
+<section id="studio">
+ <div class="split">
+  <img src="pip_think.webp" alt="Pip thinking">
+  <div>
+   <h2>Behind the channel: Pocket Cosmos Studio</h2>
+   <p>The videos are produced in Pocket Cosmos Studio, the owner's own desktop app. It turns a script into an animated episode and, when the owner approves, publishes it to the channel's own YouTube, Instagram and TikTok accounts.</p>
+   <p><a href="studio.html">How the studio works and how it uses TikTok &rarr;</a></p>
+  </div>
+ </div>
+</section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Questions about the studio, these terms or this policy can be sent to the channel through the <a href="https://www.youtube.com/@PocketCosmosTV">Pocket Cosmos YouTube channel</a> or its TikTok account <a href="https://www.tiktok.com/@pocketcosmotv">@pocketcosmotv</a>.</p>
-  </section>
+<section id="contact">
+ <h2>Contact</h2>
+ <p>Questions about the channel, the studio, our <a href="terms.html">Terms of Service</a> or our <a href="privacy.html">Privacy Policy</a> can be sent through the <a href="https://www.youtube.com/@PocketCosmosTV">Pocket Cosmos YouTube channel</a> or our TikTok account <a href="https://www.tiktok.com/@pocketcosmotv">@pocketcosmotv</a>.</p>
+</section>
+
 </main>
-
-</body>
-</html>
+<footer><div class="wrap">
+<span>&copy; 2026 Pocket Cosmos &middot; <a href="https://www.youtube.com/@PocketCosmosTV">YouTube</a> &middot; <a href="https://www.tiktok.com/@pocketcosmotv">TikTok</a></span>
+<nav><a href="studio.html">The Studio</a><a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a></nav>
+</div></footer>
+</body></html>
